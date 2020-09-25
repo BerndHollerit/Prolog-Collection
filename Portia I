@@ -1,0 +1,9 @@
+solution(P) :- member(P, [g,s,l]),
+               (
+                 P \= s, P  = s, P \= l;  % only gold inscription true
+                 P  = s, P \= s, P \= l;  % only silver inscription true
+                 P  = s, P  = s, P  = l;  % only lead inscription true
+                 P  = s, P \= s, P  = l;  % only gold inscription false
+                 P \= s, P  = s, P  = l;  % only silver inscription false
+                 P \= s, P \= s, P \= l   % only lead inscription false
+               ).

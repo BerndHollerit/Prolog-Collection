@@ -1,0 +1,11 @@
+step(X,Y) :- (Y is X - 3, X >= 3);          % we won't use this, but it's possible
+             (Y is X - 1, X =< 8, X >= 2);  % VAA -> AVV
+             (Y is X + 1, X =< 6, X >= 1);  % VVA -> AAV
+             (Y is X + 3, X =< 5).          % VVV -> AAA
+
+solution([A,B|T]) :- step(A,B), (B=8; solution([B|T])).
+
+% We take the first two items of the list and make sure that the "step" function
+% is valid on them. Then, if the second item equals 8, we are done. Otherwise,
+% we have to use our function "solution" recursively on the second item and the
+% rest of the list.

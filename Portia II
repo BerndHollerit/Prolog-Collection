@@ -1,0 +1,7 @@
+solution(P) :- member(P, [g,s,l]),  % caskets: gold, silver, lead
+               member(A, [v,f]),    % birth location of artist (Venice/Florence)
+               ( 
+                 (P \= g; A = v),   % at least one gold statement true
+                 (P \= g; A = f),   % at least one silver statement true
+                 (P \= l; P = s)    % at least one lead statement true
+               ).

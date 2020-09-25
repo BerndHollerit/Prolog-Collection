@@ -1,0 +1,15 @@
+b(D) :- (D \= g, D = s).             % third casket is made by Bellini if statements
+                                     % on caskets one and two are false
+c(D) :- (D  = g, D \=s).             % third casket is made by Cellini if statements
+                                     % on caskets one and two are true
+
+solution(D) :- member(D, [g, s, l]), % the dagger could be in casket gold,
+                                     % silver or lead
+               (
+                 (D  = g; D \= g),   % gold statement true or false
+                 (D \= s; D  = s),   % silver statement true or false
+                 (b(D); c(D))        % lead casket either from Bellini or Cellini
+               ).
+ 
+% As results, we get the caskets where the dagger could be - the suitor should choose
+% the remaining one.
